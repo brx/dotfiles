@@ -3,7 +3,7 @@
 BOOTSTRAP_DIR=`dirname $0`
 cd $BOOTSTRAP_DIR/..
 
-for f in `find . -maxdepth 1 -not -regex "\.\(/\(bin\|\.git\|\.gitignore\)\(/.*\)?\)?"`; do
+for f in `find . -maxdepth 1 -not -regex "\.\(/\(bin\|\.git\|\.gitignore\|README.md\)\(/.*\)?\)?"`; do
     fname=`basename $f`
     src=`pwd`/$fname
     tgt=~/$fname
