@@ -31,6 +31,7 @@
     gist
     htmlize
     js2-mode
+    js-comint
     magit
     markdown-mode
     nrepl
@@ -370,6 +371,41 @@ instead."
 (setq zencoding-indentation 2)
 
 (add-hook 'sgml-mode-hook 'zencoding-mode)
+
+;;; JavaScript / NodeJS
+
+(require 'js-comint)
+
+(setq inferior-js-program-command "node -e require('repl').start({ignoreUndefined:\ true})")
+
+(defun node-repl-comint-preoutput-filter (output)
+  (when (equal (buffer-name) "*js*")
+    (replace-regexp-in-string
+     "\\\[0K" ""
+     (replace-regexp-in-string
+      "\\\[.G" ""
+      (replace-regexp-in-string
+       "\\\[0J" ""
+       (replace-regexp-in-string
+        "\\[2C" ""
+        (replace-regexp-in-string
+         "" "" output)))))))
+
+(defun js-add-comint-bindings ()
+  (local-set-key (kbd "C-c C-z") 'run-js)
+  (local-set-key (kbd "C-c C-b") 'js-send-buffer)
+  (local-set-key (kbd "C-c C-r") 'js-send-region)
+  (local-set-key (kbd "C-c C-j") 'js-send-line))
+
+(add-hook 'js2-mode-hook 'js-add-comint-bindings)
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(defun node-hook ()
+  (ansi-color-for-comint-mode-on)
+  (add-to-list 'comint-preoutput-filter-functions 'node-repl-comint-preoutput-filter))
+
+(setq inferior-js-mode-hook 'node-hook)
 
 ;;; `lisp-mode'
 
