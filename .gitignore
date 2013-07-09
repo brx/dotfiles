@@ -7,3 +7,4 @@
 .emacs.d/hist-file
 .emacs.d/places
 .emacs.d/rcirc-auth-info
+.emacs.d/session.*
