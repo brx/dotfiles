@@ -1,0 +1,9 @@
+.emacs.d/.emacs.desktop
+.emacs.d/.emacs.desktop.lock
+.emacs.d/auto-save-list/
+.emacs.d/el-get/
+.emacs.d/elpa/
+.emacs.d/github-api
+.emacs.d/hist-file
+.emacs.d/places
+.emacs.d/rcirc-auth-info
