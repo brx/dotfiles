@@ -395,7 +395,7 @@ instead."
   (local-set-key (kbd "C-c C-z") 'run-js)
   (local-set-key (kbd "C-c C-b") 'js-send-buffer)
   (local-set-key (kbd "C-c C-r") 'js-send-region)
-  (local-set-key (kbd "C-c C-j") 'js-send-line))
+  (local-set-key (kbd "C-c C-e") 'js-send-last-sexp))
 
 (add-hook 'js2-mode-hook 'js-add-comint-bindings)
 
