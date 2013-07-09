@@ -7,7 +7,7 @@ for f in `find . -maxdepth 1 -not -regex "\.\(/\(bin\|\.git\|\.gitignore\|README
     fname=`basename $f`
     src=`pwd`/$fname
     tgt=~/$fname
-    if [[ -e $tgt && ! -h $tgt ]]; then
+    if [ -e $tgt -a ! -h $tgt ]; then
         echo $tgt exists and is not a symlink, please delete manually
         echo before invoking $0 again.
         exit 1
