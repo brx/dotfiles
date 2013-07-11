@@ -243,18 +243,13 @@
 
 ;;; `dired-mode'
 
-;; these will be auto-loaded (or not?)
+(require 'dired)
+(require 'dired-x)
+
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
-(defun my-dired-load-init ()
-  "for `dired-load-hook', does one-time initialization upon load."
-  (load "dired-x")
-  ;; config global variables for `dired-mode'
-  (setq dired-omit-files "^\\.\\|^#\\|\\.$"))
-
-;; add the hooks
-(add-hook 'dired-load-hook 'my-dired-load-init)
+(setq dired-omit-files "^\\.\\|^#\\|\\.$")
 (add-hook 'dired-mode-hook 'dired-omit-mode)
 
 ;;; editing
