@@ -700,8 +700,8 @@ prompt."
   "Switch to a rcirc channel buffer using `ido-switch-buffer'"
   (interactive)
   (cl-flet ((not-rcirc-p (b-name)
-                         (with-current-buffer b-name
-                           (not (eql major-mode 'rcirc-mode)))))
+              (with-current-buffer b-name
+                (not (eql major-mode 'rcirc-mode)))))
     (let ((ido-ignore-buffers (cons 'not-rcirc-p ido-ignore-buffers)))
       (ido-switch-buffer))))
 
@@ -709,8 +709,8 @@ prompt."
   "Switch to another non-rcirc buffer using `ido-switch-buffer'"
   (interactive)
   (cl-flet ((rcirc-p (b-name)
-                     (with-current-buffer b-name
-                       (eql major-mode 'rcirc-mode))))
+             (with-current-buffer b-name
+               (eql major-mode 'rcirc-mode))))
     (let ((ido-ignore-buffers (cons 'rcirc-p ido-ignore-buffers)))
       (ido-switch-buffer))))
 
