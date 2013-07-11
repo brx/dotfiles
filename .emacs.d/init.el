@@ -775,7 +775,9 @@ prompt."
 
 (defvar daytime-interval
   (if (and (boundp 'calendar-longitude)
-           (boundp 'calendar-latitude))
+           (boundp 'calendar-latitude)
+           calendar-longitude
+           calendar-latitude)
       (get-sunrise-sunset-interval)
     (cons (cons 7 0) (cons 17 0)))
   "Interval of hours considered to make up 'daytime'")
