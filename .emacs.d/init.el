@@ -747,12 +747,51 @@ prompt."
 
 ;;; Day- and Night-Time Emacs
 
-(defvar daytime-interval (cons 7 17)
+(require 'solar)
+
+(load "~/.emacs.d/solar-info" t) ;should contain calendar-longitude and calendar-latitude
+
+(defvar time-regexp "\\([0-9]+\\):\\([0-9]+\\)\\(am\\|pm\\)")
+
+(defun get-sunrise-sunset-interval ()
+  (let ((sunrise-sunset-str (solar-sunrise-sunset-string (calendar-current-date))))
+    (flet ((extract-time-str (which)
+             (replace-regexp-in-string (concat ".*" which " " time-regexp ".*")
+                                       "\\1 \\2 \\3"
+                                       sunrise-sunset-str)))
+      (let ((rise-str (extract-time-str "rise"))
+            (set-str (extract-time-str "set")))
+        (flet ((tstr->tp (tstr)
+                 (let* ((parts (split-string tstr))
+                        (h (string-to-number (first parts)))
+                        (m (string-to-number (second parts)))
+                        (am/pm (third parts)))
+                   (cons (if (string-equal "pm" am/pm)
+                             (+ h 12)
+                           h)
+                         m))))
+          (cons (tstr->tp rise-str)
+                (tstr->tp set-str)))))))
+
+(defvar daytime-interval
+  (if (and (boundp 'calendar-longitude)
+           (boundp 'calendar-latitude))
+      (get-sunrise-sunset-interval)
+    (cons (cons 7 0) (cons 17 0)))
   "Interval of hours considered to make up 'daytime'")
 
-(defun n-in-interval (n iv)
-  (and (<= (car iv) n)
-       (< n (cdr iv))))
+(defun tp->tn (tp)
+  (+ (* 100 (car tp))
+     (cdr tp)))
+
+(defun tp->tstr (tp)
+  (format "%.2d:%.2d" (car tp) (cdr tp)))
+
+(defun time-in-interval (tp iv)
+  (and (<= (tp->tn (car iv))
+           (tp->tn tp))
+       (< (tp->tn tp)
+          (tp->tn (cdr iv)))))
 
 (defvar daytime-hook nil "Hook to be run at start of day.")
 (defvar nighttime-hook nil "Hook to be run at start of night.")
@@ -761,19 +800,22 @@ prompt."
   "Timer for next `run-day/night-hook-and-reregister' invokation")
 
 (defun run-day/night-hook-and-reregister ()
-  (let* ((current-hour (elt (decode-time) 2))
-         (day-p (n-in-interval current-hour daytime-interval)))
+  (let* ((time (decode-time))
+         (current-tp (cons (elt time 2)
+                           (elt time 1)))
+         (day-p (time-in-interval current-tp daytime-interval)))
     (if day-p
         (run-hooks 'daytime-hook)
       (run-hooks 'nighttime-hook))
+    (when (and (boundp 'calendar-longitude)
+               (boundp 'calendar-latitude))
+      (setq daytime-interval (get-sunrise-sunset-interval)))
     (setq next-day/night-update-timer
-          (run-at-time (format "%.2d:00"
-                               (let ((next-hour (if day-p
-                                                    (cdr daytime-interval)
-                                                  (car daytime-interval))))
-                                 (if (<= next-hour current-hour)
-                                     (+ next-hour 24)
-                                   next-hour)))
+          (run-at-time (tp->tstr (if day-p
+                                     (cdr daytime-interval)
+                                   (let ((rise-tp (car daytime-interval)))
+                                     (cons (+ 24 (car rise-tp))
+                                           (cdr rise-tp)))))
                        nil
                        'run-day/night-hook-and-reregister))))
 
