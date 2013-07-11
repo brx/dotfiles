@@ -6,6 +6,7 @@
 .emacs.d/github-api
 .emacs.d/hist-file
 .emacs.d/places
+.emacs.d/rcirc-log
 .emacs.d/rcirc-auth-info
 .emacs.d/session.*
 /.emacs.d/solar-info
