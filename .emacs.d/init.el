@@ -773,11 +773,14 @@ prompt."
           (cons (tstr->tp rise-str)
                 (tstr->tp set-str)))))))
 
+(defun calendar-lat-long-set-p ()
+  (and (boundp 'calendar-longitude)
+       (boundp 'calendar-latitude)
+       calendar-longitude
+       calendar-latitude))
+
 (defvar daytime-interval
-  (if (and (boundp 'calendar-longitude)
-           (boundp 'calendar-latitude)
-           calendar-longitude
-           calendar-latitude)
+  (if (calendar-lat-long-set-p)
       (get-sunrise-sunset-interval)
     (cons (cons 7 0) (cons 17 0)))
   "Interval of hours considered to make up 'daytime'")
@@ -809,8 +812,7 @@ prompt."
     (if day-p
         (run-hooks 'daytime-hook)
       (run-hooks 'nighttime-hook))
-    (when (and (boundp 'calendar-longitude)
-               (boundp 'calendar-latitude))
+    (when (calendar-lat-long-set-p)
       (setq daytime-interval (get-sunrise-sunset-interval)))
     (setq next-day/night-update-timer
           (run-at-time (tp->tstr (if day-p
