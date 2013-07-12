@@ -559,13 +559,13 @@ prompt."
      ("#android-dev" rcirc-omit-mode-on rcirc-toggle-low-priority-on))))
 
 (defadvice rcirc-cmd-join (after set-channel-props activate)
-  (let ((channel (car (split-string channel)))
-        (process (or process (rcirc-buffer-process))))
-    (with-current-buffer (rcirc-get-buffer process channel)
-      (let ((hooks (cdr (assoc channel
-                               (cdr (assoc (process-name process)
-                                           rcirc-channel-join-hooks))))))
-        (mapc 'funcall hooks)))))
+  (let ((process (or process (rcirc-buffer-process))))
+    (dolist (channel (split-string channels "[ ,]" t))
+      (with-current-buffer (rcirc-get-buffer process channel)
+        (let ((hooks (cdr (assoc channel
+                                 (cdr (assoc (process-name process)
+                                             rcirc-channel-join-hooks))))))
+          (mapc 'funcall hooks))))))
 
 ;;; some general stuff..
 
