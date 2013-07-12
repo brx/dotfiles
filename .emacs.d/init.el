@@ -708,10 +708,11 @@ prompt."
 (defun ido-switch-non-rcirc-buffer ()
   "Switch to another non-rcirc buffer using `ido-switch-buffer'"
   (interactive)
-  (cl-flet ((rcirc-p (b-name)
-             (with-current-buffer b-name
-               (eql major-mode 'rcirc-mode))))
-    (let ((ido-ignore-buffers (cons 'rcirc-p ido-ignore-buffers)))
+  (cl-flet ()
+    (let ((ido-ignore-buffers (cons (lambda (b-name)
+                                      (with-current-buffer b-name
+                                        (eql major-mode 'rcirc-mode)))
+                                    ido-ignore-buffers)))
       (ido-switch-buffer))))
 
 (global-set-key (kbd "C-c b") 'ido-switch-rcirc-buffer)
