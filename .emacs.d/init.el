@@ -643,7 +643,7 @@ prompt."
 
 ;;; rcirc auto reconnect
 
-(defvar rcirc-auto-reconnect t)
+(defvar rcirc-auto-reconnect nil)
 
 (define-toggler rcirc-toggle-auto-reconnect rcirc-auto-reconnect)
 
