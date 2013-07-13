@@ -240,6 +240,15 @@
 (defadvice winring-complete-name (around use-ido activate)
   (let ((ido-enable-replace-completing-read t))
     ad-do-it))
+
+(defun winring-toggle-configuration ()
+  "Toggle back and forth between two window configurations."
+  (interactive)
+  (let ((item (ring-remove (winring-get-ring) 0)))
+    (winring-save-current-configuration)
+    (winring-restore-configuration item)))
+
+(global-set-key (kbd "C-x 7 7") 'winring-toggle-configuration)
 
 ;;; `dired-mode'
 
