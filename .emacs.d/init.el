@@ -523,7 +523,7 @@ instead."
 (defun rcirc-toggle-low-priority-on ()
   (unless rcirc-low-priority-flag (rcirc-toggle-low-priority)))
 
-(setq rcirc-buffer-maximum-lines 200)   ;maximum lines in rcirc buffer
+(setq rcirc-buffer-maximum-lines nil)   ;maximum lines in rcirc buffer
 
 (defun-rcirc-command ghost (nick)
   "Ghost ..."
