@@ -451,6 +451,10 @@ instead."
 
 (setq-default c-basic-offset 3)         ;aibo prefers this
 
+;;; `octave-mode'
+
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+
 ;;; `prolog-mode'
 
 (setq prolog-program-name "swipl")
