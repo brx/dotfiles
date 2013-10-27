@@ -32,6 +32,7 @@
     htmlize
     js2-mode
     js-comint
+    lua-mode
     magit
     markdown-mode
     nrepl
