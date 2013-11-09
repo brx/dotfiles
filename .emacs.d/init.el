@@ -28,6 +28,8 @@
     clojure-mode
     csv-mode
     diminish
+    edit-server
+    edit-server-htmlize
     gist
     htmlize
     js2-mode
@@ -96,6 +98,11 @@
 (setq x-select-enable-clipboard t)
 
 (setq shell-file-name "/bin/sh")
+
+;;; edit-server
+
+(require 'edit-server)
+(edit-server-start)
 
 ;;; Look and Feel
 
