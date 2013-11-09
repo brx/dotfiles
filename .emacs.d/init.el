@@ -343,6 +343,8 @@ instead."
                   '("evince" . "\\.pdf\\'"))
 
      (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)))
+
+(require 'esh-opt)
 
 ;;; Whitespace cleanup
 
