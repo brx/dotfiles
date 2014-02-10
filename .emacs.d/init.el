@@ -84,6 +84,8 @@
 (desktop-save-mode 1)                   ;we'll have to think about this
 (setq inhibit-splash-screen t)          ;we don't want that anymore
 
+(server-start)                          ;start emacs server at startup
+
 ;; set up a friendly greeting
 (setq initial-scratch-message ";; Welcome, Master -- happy hacking
 ")
