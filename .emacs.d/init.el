@@ -437,7 +437,11 @@ instead."
 
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'enable-lowlight-parens-mode)
+
+;;; `nrepl-mode-hook'
 
+(add-hook 'nrepl-mode-hook 'paredit-mode)
+
 ;;; `emacs-lisp-mode'
 
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)   ;symbol documentation
