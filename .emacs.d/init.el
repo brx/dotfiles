@@ -42,6 +42,7 @@
     paredit
     rainbow-delimiters
     window-number
+    wombat-theme
     yaml-mode
     yasnippet
     zencoding-mode))
@@ -865,22 +866,15 @@ prompt."
          (setq next-day/night-update-timer nil))))
 
 ;; appropriate colors for day and night
-(defvar day-fg "black" "Foreground during day")
-(defvar day-bg "white" "Background during day")
+(load-theme 'wombat)
 
 (defun enable-day-colors ()
   (interactive)
-  (set-face-foreground 'default day-fg)
-  (set-face-background 'default day-bg)
-  (set-face-background 'cursor "black")
-  (set-face-foreground 'cursor "white"))
+  (disable-theme 'wombat))
 
 (defun enable-night-colors ()
   (interactive)
-  (set-face-foreground 'default day-bg)
-  (set-face-background 'default day-fg)
-  (set-face-background 'cursor "white")
-  (set-face-foreground 'cursor "black"))
+  (enable-theme 'wombat))
 
 (add-hook 'daytime-hook 'enable-day-colors)
 (add-hook 'nighttime-hook 'enable-night-colors)
