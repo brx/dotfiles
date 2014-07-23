@@ -453,19 +453,19 @@ instead."
 
 ;;; `ruby-mode'
 
-(setq ruby-indent-level 3)              ;aibo prefers this
+(setq ruby-indent-level 4)
 
 ;;; `python-mode'
 
 (add-to-list 'auto-mode-alist '("\\.boo$" . python-mode))
 
-(setq-default python-indent-offset 3)   ;aibo prefers this
+(setq-default python-indent-offset 4)
 
 (add-hook 'python-mode-hook 'autopair-mode)
 
 ;;; `c-mode'
 
-(setq-default c-basic-offset 3)         ;aibo prefers this
+(setq-default c-basic-offset 4)
 
 ;;; `octave-mode'
 
