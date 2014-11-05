@@ -284,7 +284,8 @@
 (setq auto-save-interval 0)
 (setq auto-save-timeout 180)            ;auto-save after 180s idle
 
-(setq-default indent-tabs-mode nil)     ;we don't like tabs for indent
+(setq-default indent-tabs-mode nil)       ;we don't like tabs for indent
+(setq-default show-trailing-whitespace t) ;we like to see trailing whitespace
 
 ;; show matching parens, always
 (setq show-paren-delay 0)
