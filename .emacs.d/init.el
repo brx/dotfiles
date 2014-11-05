@@ -424,6 +424,9 @@ instead."
   (add-to-list 'comint-preoutput-filter-functions 'node-repl-comint-preoutput-filter))
 
 (setq inferior-js-mode-hook 'node-hook)
+
+(setq js2-basic-offset 2)
+(setq js2-bounce-indent-p t)
 
 ;;; `lisp-mode'
 
