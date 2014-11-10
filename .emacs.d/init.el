@@ -34,6 +34,7 @@
     htmlize
     js2-mode
     js-comint
+    less-css-mode
     lua-mode
     magit
     markdown-mode
