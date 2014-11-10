@@ -46,7 +46,7 @@
     wombat-theme
     yaml-mode
     yasnippet
-    zencoding-mode))
+    emmet-mode))
 
 (dolist (pkg-name melpa-packages)
   (when (not (package-installed-p pkg-name))
@@ -385,11 +385,11 @@ instead."
 
 ;;; HTML
 
-(require 'zencoding-mode)
+(require 'emmet-mode)
 
-(setq zencoding-indentation 2)
+(setq emmet-indentation 2)
 
-(add-hook 'sgml-mode-hook 'zencoding-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode)
 
 ;;; JavaScript / NodeJS
 
