@@ -426,8 +426,8 @@ instead."
 
 (setq inferior-js-mode-hook 'node-hook)
 
-(setq js2-basic-offset 2)
-(setq js2-bounce-indent-p nil)
+(set-default 'js2-basic-offset 2)
+(set-default 'js2-bounce-indent-p nil)
 
 (setq js-indent-level 2)                ;for json files, maybe
 
