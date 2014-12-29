@@ -115,7 +115,9 @@
 (global-set-key (kbd "C-'") 'ace-jump-mode)
 
 ;; no menu-bar, tool-bar, scroll-bar or blinking cursor
+
 (set-scroll-bar-mode nil)
+(horizontal-scroll-bar-mode -1)
 
 (setq visible-bell t)
 
