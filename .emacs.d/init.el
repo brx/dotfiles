@@ -51,7 +51,8 @@
     wombat-theme
     yaml-mode
     yasnippet
-    emmet-mode))
+    emmet-mode
+    smart-mode-line))
 
 (dolist (pkg-name melpa-packages)
   (when (not (package-installed-p pkg-name))
@@ -142,6 +143,11 @@
 (setq-default indicate-empty-lines nil)     ;show empty lines
 
 (minibuffer-depth-indicate-mode 1)      ;indicate minibuffer depth
+
+;; smart-mode-line
+(sml/setup)
+
+(add-to-list 'sml/replacer-regexp-list '("^~/.dotfiles/" ":dot:") t)
 
 ;; remember cursor positions in files
 (require 'saveplace)
@@ -884,11 +890,13 @@ prompt."
 
 (defun enable-day-colors ()
   (interactive)
-  (disable-theme 'wombat))
+  (disable-theme 'wombat)
+  (sml/apply-theme 'light nil t))
 
 (defun enable-night-colors ()
   (interactive)
-  (enable-theme 'wombat))
+  (enable-theme 'wombat)
+  (sml/apply-theme 'respectful nil t))
 
 (add-hook 'daytime-hook 'enable-day-colors)
 (add-hook 'nighttime-hook 'enable-night-colors)
