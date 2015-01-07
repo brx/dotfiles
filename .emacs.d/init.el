@@ -7,6 +7,11 @@
 (when (featurep 'xemacs)
   (error "You are using XEmacs, poor you!"))
 
+;;; Custom Settings
+
+(setq custom-file "~/.emacs.d/custom")
+(load custom-file t)
+
 ;;; Package Management
 
 ;; setting up melpa stuff
@@ -889,11 +894,6 @@ prompt."
 (add-hook 'nighttime-hook 'enable-night-colors)
 
 (toggle-day/night-hooks 1)
-
-;;; Custom Settings
-
-(setq custom-file "~/.emacs.d/custom")
-(load custom-file t)
 
 ;;; Enabled Disabled Commands
 
