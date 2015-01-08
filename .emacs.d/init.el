@@ -147,6 +147,8 @@
 ;; smart-mode-line
 (sml/setup)
 
+(setq sml/mode-width 'right)            ;show minor modes on right side
+
 (add-to-list 'sml/replacer-regexp-list '("^~/.dotfiles/" ":dot:") t)
 
 ;; remember cursor positions in files
