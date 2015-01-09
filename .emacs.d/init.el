@@ -186,6 +186,8 @@
 (require 'helm)
 (require 'helm-config)
 
+(helm-mode 1)
+
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
@@ -812,9 +814,6 @@ prompt."
                                         (eql major-mode 'rcirc-mode)))
                                     ido-ignore-buffers)))
       (ido-switch-buffer))))
-
-(global-set-key (kbd "C-c b") 'ido-switch-rcirc-buffer)
-(global-set-key (kbd "C-x b") 'ido-switch-non-rcirc-buffer)
 
 (load "~/.emacs.d/rcirc-auth-info" t)
 
