@@ -10,3 +10,5 @@
 .emacs.d/rcirc-auth-info
 .emacs.d/session.*
 /.emacs.d/solar-info
+/.emacs.d/custom
+/.emacs.d/recentf
