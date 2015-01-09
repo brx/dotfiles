@@ -26,6 +26,8 @@
 
 (defvar melpa-packages
   '(ace-jump-mode
+    ace-jump-zap
+    ace-isearch
     auctex
     auto-complete
     autopair
@@ -121,6 +123,12 @@
 ;; `ace-jump-mode'
 
 (global-set-key (kbd "C-'") 'ace-jump-mode)
+
+;; `ace-isearch-mode'
+
+(global-ace-isearch-mode 1)
+
+(setq ace-isearch-input-length 5)
 
 ;; no menu-bar, tool-bar, scroll-bar or blinking cursor
 
@@ -351,8 +359,8 @@
 (browse-kill-ring-default-keybindings)  ;bind m-y to it
 
 ;; more useful zapper more conveniently
-(global-set-key (kbd "M-z") 'zap-up-to-char)
-(global-set-key (kbd "M-Z") 'zap-to-char)
+(global-set-key (kbd "M-z") 'ace-jump-zap-up-to-char-dwim)
+(global-set-key (kbd "M-Z") 'ace-jump-zap-to-char-dwim)
 
 (defun duplicate-line-or-region (arg)
   "Duplicates the current region (transient) ARG times, but at
