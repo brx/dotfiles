@@ -99,7 +99,8 @@
 (server-start)                          ;start emacs server at startup
 
 ;; set up a friendly greeting
-(setq initial-scratch-message ";; Welcome, Master -- happy hacking
+(setq initial-scratch-message ";; Welcome and happy hacking
+
 ")
 
 ;; some info about my user
