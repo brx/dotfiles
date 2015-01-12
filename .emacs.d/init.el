@@ -442,6 +442,32 @@ instead."
 ;;; Magit
 
 (global-set-key (kbd "C-c m") 'magit-status)
+
+(defun magit-stage/unstage-line ()
+  "Stage or unstage current line in magit-status buffer hunk."
+  (interactive)
+  (cl-macrolet ((with-transient-line (&rest forms)
+                  (let ((v (cl-gensym "value")))
+                    `(let ((,v transient-mark-mode))
+                       (unwind-protect
+                           (progn
+                             (push-mark (line-beginning-position))
+                             (end-of-line)
+                             (setq transient-mark-mode t)
+                             ,@forms)
+                         (setq transient-mark-mode ,v))))))
+    (let* ((current-section (magit-current-section))
+           (current-section-path (magit-section-path current-section)))
+      (if (eq 3 (length current-section-path)) ;point is in a hunk
+          (cl-case (car current-section-path)
+            ((unstaged)
+             (with-transient-line (magit-stage-item)))
+            ((staged)
+             (with-transient-line (magit-unstage-item)))
+            (t (message "Nothing to do here.")))
+        (message "You have to be in a hunk to do this.")))))
+
+(define-key magit-status-mode-map (kbd ",") 'magit-stage/unstage-line)
 
 ;;; Latex
 
