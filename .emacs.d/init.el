@@ -129,7 +129,7 @@
 
 (global-ace-isearch-mode 1)
 
-(setq ace-isearch-input-length 5)
+(setq ace-isearch-input-length 6)
 
 ;; no menu-bar, tool-bar, scroll-bar or blinking cursor
 
