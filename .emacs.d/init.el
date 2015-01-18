@@ -508,6 +508,7 @@ instead."
   (local-set-key (kbd "C-c C-e") 'js-send-last-sexp))
 
 (add-hook 'js2-mode-hook 'js-add-comint-bindings)
+(add-hook 'js2-mode-hook 'autopair-mode)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
