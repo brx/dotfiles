@@ -441,6 +441,8 @@ instead."
 
 ;;; Magit
 
+(require 'magit)
+
 (global-set-key (kbd "C-c m") 'magit-status)
 
 (defun magit-stage/unstage-line ()
