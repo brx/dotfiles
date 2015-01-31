@@ -28,6 +28,7 @@
   '(ace-jump-mode
     ace-jump-zap
     ace-isearch
+    ace-window
     auctex
     auto-complete
     autopair
@@ -121,9 +122,9 @@
 
 ;;; Look and Feel
 
-;; `ace-jump-mode'
+;; `ace-window'
 
-(global-set-key (kbd "C-'") 'ace-jump-mode)
+(global-set-key (kbd "C-'") 'ace-window)
 
 ;; `ace-isearch-mode'
 
