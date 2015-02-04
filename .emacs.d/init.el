@@ -50,7 +50,6 @@
     org
     paredit
     rainbow-delimiters
-    window-number
     wombat-theme
     yaml-mode
     yasnippet
@@ -121,10 +120,6 @@
 (edit-server-start)
 
 ;;; Look and Feel
-
-;; `ace-window'
-
-(global-set-key (kbd "C-'") 'ace-window)
 
 ;; `ace-isearch-mode'
 
@@ -298,11 +293,9 @@
 
 ;;; windows
 
-;; `window-number-mode' is quite useful
-(require 'window-number)
-(window-number-meta-mode 1)
+;; `ace-window'
 
-(define-key window-number-mode-map (kbd "C-x C-j") nil) ;unwanted crap
+(global-set-key (kbd "C-'") 'ace-window)
 
 ;; `winner-mode' has nice undo for windows ;)
 (require 'winner)
