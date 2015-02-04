@@ -152,6 +152,14 @@
 
 (minibuffer-depth-indicate-mode 1)      ;indicate minibuffer depth
 
+;; `hl-line-mode'
+
+(global-hl-line-mode t)
+
+(make-face 'my-hl-line)
+
+(set-face-attribute 'hl-line nil :inherit 'my-hl-line)
+
 ;; smart-mode-line
 (sml/setup)
 
@@ -962,12 +970,14 @@ prompt."
 (defun enable-day-colors ()
   (interactive)
   (disable-theme 'wombat)
-  (sml/apply-theme 'light nil t))
+  (sml/apply-theme 'light nil t)
+  (set-face-background 'my-hl-line (face-background 'highlight)))
 
 (defun enable-night-colors ()
   (interactive)
   (enable-theme 'wombat)
-  (sml/apply-theme 'respectful nil t))
+  (sml/apply-theme 'respectful nil t)
+  (set-face-background 'my-hl-line "#1b1b1b"))
 
 (add-hook 'daytime-hook 'enable-day-colors)
 (add-hook 'nighttime-hook 'enable-night-colors)
