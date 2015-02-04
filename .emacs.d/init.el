@@ -131,7 +131,7 @@
 (global-ace-isearch-mode 1)
 
 (setq ace-isearch-input-length 6
-      ace-isearch-input-idle-delay 0.15)
+      ace-isearch-input-idle-delay 0.25)
 
 ;; no menu-bar, tool-bar, scroll-bar or blinking cursor
 
