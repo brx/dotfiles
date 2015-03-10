@@ -56,7 +56,8 @@
     emmet-mode
     smart-mode-line
     helm
-    helm-git-files))
+    helm-git-files
+    virtualenvwrapper))
 
 (dolist (pkg-name melpa-packages)
   (when (not (package-installed-p pkg-name))
