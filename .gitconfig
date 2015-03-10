@@ -3,3 +3,5 @@
 	email = andreas.scholta@gmail.com
 [core]
 	autocrlf = input
+[push]
+	default = simple
