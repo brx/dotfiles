@@ -57,7 +57,8 @@
     smart-mode-line
     helm
     helm-git-files
-    virtualenvwrapper))
+    virtualenvwrapper
+    web-mode))
 
 (dolist (pkg-name melpa-packages)
   (when (not (package-installed-p pkg-name))
@@ -485,6 +486,12 @@ instead."
 (setq emmet-indentation 2)
 
 (add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
+
+(setq web-mode-css-indent-offset 2
+      web-mode-markup-indent-offset 2)
+
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 
 ;;; JavaScript / NodeJS
 
