@@ -492,6 +492,8 @@ instead."
       web-mode-markup-indent-offset 2)
 
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+
+(setq-default web-mode-engine "django")
 
 ;;; JavaScript / NodeJS
 
