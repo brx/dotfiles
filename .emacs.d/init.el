@@ -493,7 +493,8 @@ instead."
 
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 
-(setq web-mode-engines-alist '(("django" . "\\.html$")))
+(setq web-mode-engines-alist '(("django" . "\\.html$")
+                               ("django" . "\\.inc$")))
 
 ;;; JavaScript / NodeJS
 
