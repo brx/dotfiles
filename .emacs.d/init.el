@@ -20,9 +20,7 @@
              '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
-
-(when (null package-archive-contents)
-  (package-refresh-contents))
+(package-refresh-contents)
 
 (defvar melpa-packages
   '(ace-jump-mode
