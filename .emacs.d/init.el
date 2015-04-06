@@ -522,6 +522,8 @@ instead."
 (add-hook 'js2-mode-hook 'js-add-comint-bindings)
 (add-hook 'js2-mode-hook 'autopair-mode)
 
+(setq js2-global-externs '("$" "_"))
+
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (defun node-hook ()
