@@ -33,6 +33,7 @@
     browse-kill-ring
     clojure-mode
     csv-mode
+    darkroom
     diminish
     edit-server
     edit-server-htmlize
@@ -381,6 +382,10 @@ instead."
         (yank)))))
 
 (global-set-key (kbd "C-S-d") 'duplicate-line-or-region)
+
+;;; `darkroom-mode'
+
+(require 'darkroom)
 
 ;;; Gists
 
