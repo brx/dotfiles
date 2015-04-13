@@ -602,7 +602,14 @@ instead."
 
 ;;; `markdown-mode'
 
-(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
+(defun apply-markdown-mode-tweaks ()
+  (visual-line-mode 1)
+  (darkroom-tentative-mode 1)
+  (flyspell-mode 1))
+
+(add-hook 'markdown-mode-hook 'apply-markdown-mode-tweaks)
+
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;;; `org-mode'
 
