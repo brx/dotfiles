@@ -154,7 +154,7 @@
 (minibuffer-depth-indicate-mode 1)      ;indicate minibuffer depth
 
 ;; window splitting behavior
-(setq split-width-threshold 90)
+(setq split-width-threshold 150)
 
 ;; `hl-line-mode'
 
