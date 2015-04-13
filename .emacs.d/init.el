@@ -451,6 +451,8 @@ instead."
 
 ;;; Magit
 
+(setq magit-restore-window-configuration t)
+
 (global-set-key (kbd "C-c m") 'magit-status)
 
 (eval-after-load "magit"
