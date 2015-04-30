@@ -585,6 +585,7 @@ instead."
 (add-to-list 'auto-mode-alist '("\\.boo$" . python-mode))
 
 (setq-default python-indent-offset 4)
+(setq-default python-fill-docstring-style 'symmetric)
 
 (add-hook 'python-mode-hook 'autopair-mode)
 
