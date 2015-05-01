@@ -52,6 +52,7 @@
     wombat-theme
     yaml-mode
     yasnippet
+    auto-yasnippet
     emmet-mode
     smart-mode-line
     helm
@@ -647,6 +648,14 @@ instead."
 ;;; `yasnippet'
 
 (require 'yasnippet)
+
+;;; `auto-yasnippet'
+
+(require 'auto-yasnippet)
+
+(global-set-key (kbd "s-w") 'aya-create)
+(global-set-key (kbd "s-y") 'aya-expand)
+(global-set-key (kbd "s-e") 'aya-open-line)
 
 ;;; Changing default font size and font
 
