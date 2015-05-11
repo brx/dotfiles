@@ -58,7 +58,8 @@
     helm
     helm-git-files
     virtualenvwrapper
-    web-mode))
+    web-mode
+    ledger-mode))
 
 (dolist (pkg-name melpa-packages)
   (when (not (package-installed-p pkg-name))
@@ -390,6 +391,12 @@ instead."
 ;;; `darkroom-mode'
 
 (require 'darkroom)
+
+;;; `ledger-mode'
+
+(require 'ledger-mode)
+
+(add-to-list 'auto-mode-alist '("\\.journal$" . ledger-mode))
 
 ;;; Gists
 
