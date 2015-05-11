@@ -391,6 +391,18 @@ instead."
 ;;; `darkroom-mode'
 
 (require 'darkroom)
+
+(defun toggle-immersive-mode ()
+  "Toggle display of fringe, global line hl and mode-line."
+  (interactive)
+  (if (eql fringe-mode 0)
+      (progn
+        (fringe-mode nil)
+        (global-hl-line-mode 1)
+        (kill-local-variable 'mode-line-format))
+    (fringe-mode 0)
+    (global-hl-line-mode 0)
+    (setq-local mode-line-format nil)))
 
 ;;; `ledger-mode'
 
