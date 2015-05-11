@@ -1024,6 +1024,7 @@ prompt."
   (interactive)
   (enable-theme 'wombat)
   (sml/apply-theme 'respectful nil t)
+  (set-face-underline-p 'highlight nil)
   (set-face-background 'my-hl-line "#1b1b1b"))
 
 (add-hook 'daytime-hook 'enable-day-colors)
