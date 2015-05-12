@@ -673,8 +673,6 @@ instead."
 (defun set-font-size (pt-size)
   (interactive (list (read-number "Point size: ")))
   (set-face-attribute 'default nil :height (* pt-size 10)))
-
-(set-font-size 11)               ;we can change buffer font size via C-x C-{=,-}
 
 ;;; `rcirc'
 
