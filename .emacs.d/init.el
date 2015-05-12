@@ -204,6 +204,12 @@
 (global-unset-key (kbd "C-x c"))
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 
+(eval-after-load 'helm
+  '(progn
+     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+     (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+     (define-key helm-map (kbd "C-z") 'helm-select-action)))
+
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
