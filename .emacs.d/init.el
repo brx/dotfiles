@@ -49,7 +49,6 @@
     org
     paredit
     rainbow-delimiters
-    wombat-theme
     yaml-mode
     yasnippet
     auto-yasnippet
