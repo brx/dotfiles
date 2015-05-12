@@ -20,7 +20,6 @@
              '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
-(package-refresh-contents)
 
 (defvar melpa-packages
   '(ace-jump-mode
@@ -60,11 +59,15 @@
     web-mode
     ledger-mode))
 
-(dolist (pkg-name melpa-packages)
-  (when (not (package-installed-p pkg-name))
-    (let ((pkg-desc (cdr (assq pkg-name package-archive-contents))))
-      (when pkg-desc
-        (package-install pkg-name)))))
+(let ((refreshed nil))
+  (dolist (pkg-name melpa-packages)
+    (when (not (package-installed-p pkg-name))
+      (unless refreshed
+        (package-refresh-contents)
+        (setq refreshed t))
+      (let ((pkg-desc (cdr (assq pkg-name package-archive-contents))))
+        (when pkg-desc
+          (package-install pkg-name))))))
 
 ;; setting up el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
