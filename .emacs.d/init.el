@@ -462,6 +462,7 @@ instead."
 
 ;;; Magit
 
+(setq magit-last-seen-setup-instructions "1.4.0")
 (setq magit-restore-window-configuration t)
 
 (global-set-key (kbd "C-c m") 'magit-status)
