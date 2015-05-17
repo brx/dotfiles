@@ -1020,7 +1020,7 @@ prompt."
          (setq next-day/night-update-timer nil))))
 
 ;; appropriate colors for day and night
-(load-theme 'wombat)
+(load-theme 'wombat t t)
 
 (defun enable-day-colors ()
   (interactive)
@@ -1038,7 +1038,6 @@ prompt."
 (add-hook 'daytime-hook 'enable-day-colors)
 (add-hook 'nighttime-hook 'enable-night-colors)
 
-(toggle-day/night-hooks 0)
 (toggle-day/night-hooks 1)
 
 ;;; Enabled Disabled Commands
