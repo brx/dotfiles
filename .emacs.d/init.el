@@ -987,9 +987,11 @@ prompt."
 (defvar nighttime-hook nil "Hook to be run at start of night.")
 
 (defvar next-day/night-update-timer nil
-  "Timer for next `run-day/night-hook-and-reregister' invokation")
+  "Timer for next `run-day/night-hook-and-reregister' invocation")
 
 (defun run-day/night-hook-and-reregister ()
+  (when (calendar-lat-long-set-p)
+    (setq daytime-interval (get-sunrise-sunset-interval)))
   (let* ((time (decode-time))
          (current-tp (cons (elt time 2)
                            (elt time 1)))
@@ -997,8 +999,6 @@ prompt."
     (if day-p
         (run-hooks 'daytime-hook)
       (run-hooks 'nighttime-hook))
-    (when (calendar-lat-long-set-p)
-      (setq daytime-interval (get-sunrise-sunset-interval)))
     (setq next-day/night-update-timer
           (run-at-time (tp->tstr (if day-p
                                      (cdr daytime-interval)
@@ -1011,7 +1011,11 @@ prompt."
 (defun toggle-day/night-hooks (&optional n)
   "Toggles the timed running of `run-day/night-hook-and-reregister'"
   (interactive "P")
-  (cond ((and (not next-day/night-update-timer)
+  (cond ((eql n 7)
+         (when next-day/night-update-timer
+           (cancel-timer next-day/night-update-timer))
+         (run-day/night-hook-and-reregister))
+        ((and (not next-day/night-update-timer)
               (or (not n) (> n 0)))
          (run-day/night-hook-and-reregister))
         ((and next-day/night-update-timer
