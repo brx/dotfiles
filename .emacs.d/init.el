@@ -308,6 +308,8 @@
 
 (global-set-key (kbd "C-'") 'ace-window)
 
+(setq aw-scope 'frame)               ;only consider windows of the current frame
+
 ;; `winner-mode' has nice undo for windows ;)
 (require 'winner)
 (winner-mode 1)
