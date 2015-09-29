@@ -230,6 +230,8 @@
                                           ;`declare-function' sexp.
       helm-scroll-amount 8 ;scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t)
+
+(global-set-key (kbd "C-o") 'helm-swoop)
 
 ;;; `ido' is buffer and file selection by substring matching
 
