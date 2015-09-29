@@ -131,7 +131,9 @@
 (global-ace-isearch-mode 1)
 
 (setq ace-isearch-input-length 6
-      ace-isearch-input-idle-delay 1)
+      ace-isearch-input-idle-delay 1
+      ace-isearch-use-jump 'printing-char
+      ace-isearch-use-function-from-isearch nil)
 
 ;; no menu-bar, tool-bar, scroll-bar or blinking cursor
 
