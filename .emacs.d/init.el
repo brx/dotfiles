@@ -39,6 +39,7 @@
     gist
     htmlize
     js2-mode
+    jsx-mode
     js-comint
     less-css-mode
     lua-mode
