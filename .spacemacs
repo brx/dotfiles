@@ -35,7 +35,7 @@ values."
      org
      python
      spell-checking
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-by-default nil)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
