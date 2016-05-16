@@ -33,7 +33,7 @@ values."
      (html :variables web-mode-markup-indent-offset 2)
      markdown
      org
-     python
+     (python :variables python-fill-docstring-style 'django)
      spell-checking
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      (shell :variables
